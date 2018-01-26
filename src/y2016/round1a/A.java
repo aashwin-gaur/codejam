@@ -9,7 +9,7 @@ import commons.Problem;
 import commons.Problem.Size;
 import commons.Round;
 
-//Last Word
+//Last Word //Implementation 1
 public class A extends AbstractSolutionAdapter implements CodeJam<String> { //the parameter is the return type of your solution
 	
 	//configure these for your problem
@@ -35,10 +35,7 @@ public class A extends AbstractSolutionAdapter implements CodeJam<String> { //th
 		}
 		return best.toString();
 	}
-	
-	
-	
-	//do not change
+
 	public static void main(String[] args) throws Exception {	
 		createSolutionInstance();
 	}

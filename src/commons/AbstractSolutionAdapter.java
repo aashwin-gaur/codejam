@@ -7,6 +7,7 @@ public abstract class AbstractSolutionAdapter {
 	public static IOHandler io;
 	
 	public static <T> void solver(Object object){
+		//argument could have been CodeJam<T> but then the generics in the createSolutionInstance() wouldn't work, hence we pass in an object and recast to CodeJam<T> 
 		CodeJam<T> solved = (CodeJam<T>)object;
 		int tests = io.getNextInt();
 		T result = null;
@@ -21,6 +22,8 @@ public abstract class AbstractSolutionAdapter {
 	}
 	
 	public static void createSolutionInstance() throws Exception{
+		//using stack trace [2] we can get the name of the calling class(name of the class which is creating an instance in the main method)
+		//and pass it in since thats where the solve method is overridden and implemented
 		solver(Class.forName(Thread.currentThread().getStackTrace()[2].getClassName()).newInstance());
 	}
 }

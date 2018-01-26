@@ -8,7 +8,7 @@ import commons.Problem.Size;
 import commons.Round;
 
 
-//Dice Straight
+//Dice Straight   //Implementation 2 
 public class A extends AbstractSolutionAdapter implements CodeJam<Integer>{
 	
 	public static void main(String[] args) {
@@ -19,7 +19,6 @@ public class A extends AbstractSolutionAdapter implements CodeJam<Integer>{
 	
 	@Override
 	public Integer solve() {
-		
 		final int noOfDice = io.getNextInt();
 		final int sides = 6;
 		int[] allSides = new int[noOfDice*sides];
