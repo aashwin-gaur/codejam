@@ -1,19 +1,22 @@
 package y2016.round1a;
 
+import java.lang.invoke.MethodHandles;
+
 import commons.AbstractSolutionAdapter;
 import commons.CodeJam;
 import commons.IOHandler;
 import commons.Problem;
+import commons.Problem.Size;
 import commons.Round;
 
 //Last Word
 public class A extends AbstractSolutionAdapter implements CodeJam<String> { //the parameter is the return type of your solution
 	
-	public static void main(String[] args) {
-		io = new IOHandler("2016",Round.ROUND1A, Problem.A, Problem.Size.LARGE,PRACTICE,FILE_PRESENT);		
-		solver(new A());
+	//configure these for your problem
+	static {
+		io = new IOHandler("2016",Round.ROUND1A, Problem.A, Size.LARGE,PRACTICE,FILE_PRESENT);	
 	}
-
+	
 	//add solution in here  //the return type here is what will be printed as the result for that particular test case 
 	@Override
 	public String solve() {
@@ -31,5 +34,12 @@ public class A extends AbstractSolutionAdapter implements CodeJam<String> { //th
 			}
 		}
 		return best.toString();
+	}
+	
+	
+	
+	//do not change
+	public static void main(String[] args) throws Exception {	
+		createSolutionInstance();
 	}
 }

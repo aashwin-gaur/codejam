@@ -4,6 +4,7 @@ import commons.AbstractSolutionAdapter;
 import commons.CodeJam;
 import commons.IOHandler;
 import commons.Problem;
+import commons.Problem.Size;
 import commons.Round;
 
 
@@ -11,7 +12,7 @@ import commons.Round;
 public class A extends AbstractSolutionAdapter implements CodeJam<Integer>{
 	
 	public static void main(String[] args) {
-		io = new IOHandler("2017",Round.FINALS, Problem.A, Problem.Size.SMALL,PRACTICE,FILE_PRESENT);
+		io = new IOHandler("2017",Round.FINALS, Problem.A, Size.SMALL,PRACTICE,FILE_PRESENT);
 		solver(new A());
 	}
 	
