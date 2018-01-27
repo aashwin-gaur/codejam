@@ -1,5 +1,7 @@
 package commons;
 
+import java.lang.annotation.Annotation;
+
 public abstract class AbstractSolutionAdapter {
 	public static final boolean FILE_PRESENT = true;
 	public static final boolean PRACTICE = true;
@@ -26,4 +28,18 @@ public abstract class AbstractSolutionAdapter {
 		//and pass it in since thats where the solve method is overridden and implemented
 		solver(Class.forName(Thread.currentThread().getStackTrace()[2].getClassName()).newInstance());
 	}
+	
+	//get IOConfig from the annoation in the calling class and create the io object
+	public static void setIOConfig() {
+		Class callingClass = null;
+		try {
+			callingClass = Class.forName(Thread.currentThread().getStackTrace()[2].getClassName());
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+		Annotation anns = callingClass.getAnnotation(CodeJamArgs.class);
+		CodeJamArgs args = (CodeJamArgs)anns;
+		io = new IOHandler(args.year(), args.round(), args.problem(), args.size(), args.practice(), args.filepresent());
+	}
+	
 }
