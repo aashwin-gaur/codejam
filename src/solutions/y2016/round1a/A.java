@@ -1,4 +1,4 @@
-package y2016.round1a;
+package solutions.y2016.round1a;
 
 import commons.AbstractSolutionAdapter;
 import commons.CodeJam;

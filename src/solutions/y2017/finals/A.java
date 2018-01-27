@@ -1,4 +1,4 @@
-package y2017.finals;
+package solutions.y2017.finals;
 
 import commons.AbstractSolutionAdapter;
 import commons.CodeJam;
