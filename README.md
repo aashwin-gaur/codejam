@@ -26,7 +26,8 @@ framework to hit the ground running with the google codejam
 public static void main(String[] args) throws Exception {	
 		setIOConfig();
 		createSolutionInstance();
-}```
+}
+```
 
 
-Example usage - https://github.com/aashwin-gaur/codejam/blob/master/src/solutions/y2016/round1a/A.java
+[Example usage](https://github.com/aashwin-gaur/codejam/blob/master/src/solutions/y2016/round1a/A.java)
