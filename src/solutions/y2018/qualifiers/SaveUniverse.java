@@ -12,26 +12,24 @@ public class SaveUniverse extends AbstractSolutionAdapter implements CodeJam<Str
         char[] instructions = io.getNext().toCharArray();
         int instructionsLength = instructions.length;
 
-        int switches = 0;
+        int swaps = 0;
         if (getDamage(instructions) <= d) {
             return "0";
         }
         for (int i = 0; i < instructionsLength - 1; i++) {
             if (instructions[i] == 'C' && instructions[i + 1] == 'S') {
                 swap(instructions, i, i + 1);
-                switches++;
+                swaps++;
+                i = (i > 1) ? i - 2 : i; //backtrack incase there are more swaps possible after a swap
                 if (getDamage(instructions) <= d) {
                     break;
                 }
-                if (i > 1) {
-                    i -= 2;
-                }
             }
         }
-        if (switches == 0) {
+        if (swaps == 0) {
             return "IMPOSSIBLE";
         }
-        return Integer.toString(switches);
+        return Integer.toString(swaps);
     }
 
     private void swap(char[] array, int a, int b) {
