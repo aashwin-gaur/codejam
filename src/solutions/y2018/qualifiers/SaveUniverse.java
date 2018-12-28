@@ -4,37 +4,28 @@ import commons.*;
 
 
 @CodeJamArgs(year = "2018", round = Round.QUALIFIERS, problem = Problem.A, size = Problem.Size.SMALL, practice = true, filepresent = true)
-//set config heres
 public class SaveUniverse extends AbstractSolutionAdapter implements CodeJam<String> {
 
-    @Override
+    @Override //O(n^2) solution
     public String solve() {
         int d = io.getNextInt();
         char[] instructions = io.getNext().toCharArray();
         int instructionsLength = instructions.length;
 
-        //strategy - replace the last shoot with the first charge to get maximal change through the chain.
-        // **** cant do this, only adjacent instructions can be swapped ****
-
-        int chargeIndex = 0, shootIndex = instructionsLength - 1;
         int switches = 0;
         if (getDamage(instructions) <= d) {
             return "0";
         }
-        while (chargeIndex < shootIndex) {
-
-            if (instructions[chargeIndex] == 'C') {
-                if (instructions[shootIndex] == 'S') {
-                    swap(instructions, chargeIndex, shootIndex);
-                    switches++;
-                    if (getDamage(instructions) <= d) {
-                        break;
-                    }
-                } else {
-                    shootIndex--;
+        for (int i = 0; i < instructionsLength - 1; i++) {
+            if (instructions[i] == 'C' && instructions[i + 1] == 'S') {
+                swap(instructions, i, i + 1);
+                switches++;
+                if (getDamage(instructions) <= d) {
+                    break;
                 }
-            } else {
-                chargeIndex++;
+                if (i > 1) {
+                    i -= 2;
+                }
             }
         }
         if (switches == 0) {
@@ -49,7 +40,7 @@ public class SaveUniverse extends AbstractSolutionAdapter implements CodeJam<Str
         array[b] = temp;
     }
 
-    private int getDamage(char[] instructions) {
+    private int getDamage(char[] instructions) { //is it possible to make this constant time?
         int instructionsLength = instructions.length;
         int damage = 0, charges = 0;
         for (int i = 0; i < instructionsLength; i++) {
