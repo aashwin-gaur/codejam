@@ -16,7 +16,8 @@ public class SaveUniverse extends AbstractSolutionAdapter implements CodeJam<Str
         if (getDamage(instructions) <= d) {
             return "0";
         }
-        for (int i = 0; i < instructionsLength - 1; i++) {
+        int i;
+        for (i = 0; i < instructionsLength - 1; i++) {
             if (instructions[i] == 'C' && instructions[i + 1] == 'S') {
                 swap(instructions, i, i + 1);
                 swaps++;
@@ -26,7 +27,7 @@ public class SaveUniverse extends AbstractSolutionAdapter implements CodeJam<Str
                 }
             }
         }
-        if (swaps == 0) {
+        if (i == (instructionsLength - 1)) {
             return "IMPOSSIBLE";
         }
         return Integer.toString(swaps);
